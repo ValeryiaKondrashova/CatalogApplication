@@ -1,0 +1,21 @@
+<div th:fragment="sampleLeftNavigation">
+    <div class="nav-table">
+
+        <a th:href="@{/viewProducts}"><h3>Просмотреть товары</h3></a>
+
+        <li th:if="${roleSuperUser} == true">
+        <a th:href="@{/addProduct}"><h3>Добавить товар</h3></a>
+        <a th:href="@{/editProducts}"><h3>Редактировать товар</h3></a>
+        <a th:href="@{/deleteProducts}"><h3>Удалить товар</h3></a>
+        <li>
+
+        <li th:if="${roleAdmin} == true">
+            <a th:href="@{/viewCategories}"><h3>Просмотреть категорий</h3></a>
+            <a th:href="@{/addCategory}"><h3>Добавить категорию</h3></a>
+            <a th:href="@{/editCategories}"><h3>Редактировать категорию</h3></a>
+            <a th:href="@{/deleteCategories}"><h3>Удалить категорию</h3></a>
+
+            <a th:href="@{/navigationAdmin}"><h3>Учетные записи</h3></a>
+        </li>
+    </div>
+</div>

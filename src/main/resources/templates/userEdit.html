@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="samples/sampleHead :: sampleHead"></head>
+
+<body>
+<header th:insert="samples/sampleNavigationAdmin :: sampleNavigationAdmin" class="header"></header>
+
+<div class="start-page">
+    <div class="shape shape-small"></div>
+    <div class="shape shape-big"></div>
+    <div class="container2">
+
+        <div class="add-text">
+            <h1>Редактирование пользователя</h1>
+            <h3>Все поля являются обязательными.</h3>
+        </div>
+
+        <div class="add">
+            <h3 th:text="${message}"/><br>
+            <form th:action="@{/user/{user}}" method="post">
+                <input type="text" name="username" th:value="${user.username}">
+                <input type="text" name="password" th:value="${user.password}">
+                <ul>
+                    <li th:each="rol : ${roless}">
+                        <input type="checkbox" th:field="*{user.roles}" th:value="${rol.getAuthority()}" />
+                        <label th:text="${rol.getAuthority()}"></label>
+                    </li>
+                </ul>
+                <input type="hidden" name="userId" th:value="${user.id}">
+
+                <button type="submit">Save</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

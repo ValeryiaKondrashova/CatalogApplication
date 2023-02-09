@@ -1,0 +1,8 @@
+<div th:fragment="sampleSearchProduct">
+    <div class="search">
+        <form method="post" th:action="@{/filterProduct}">
+            <input type="text" name="filterProduct" placeholder="Введите модель товара">
+            <input type="image" th:src="@{img/search.png}" width="16px"/>
+        </form>
+    </div>
+</div>

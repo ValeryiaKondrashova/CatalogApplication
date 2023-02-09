@@ -1,0 +1,8 @@
+<div th:fragment="sampleSearchUser">
+    <div class="search">
+        <form method="post" th:action="@{/filterUser}">
+            <input type="text" name="filterUser" placeholder="Введите username">
+            <input type="image" th:src="@{/img/search.png}" width="16px"/>
+        </form>
+    </div>
+</div>

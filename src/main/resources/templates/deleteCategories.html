@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head th:insert="samples/sampleHead :: sampleHead"></head>
+
+<body>
+<header th:insert="samples/sampleNavigation :: sampleNavigation" class="header"></header>
+
+<div class="start-page">
+    <div class="shape shape-small"></div>
+    <div class="shape shape-big"></div>
+    <div class="container">
+        <div class="aside">
+            <div th:insert="samples/sampleSearchProduct :: sampleSearchProduct"></div>
+        </div>
+
+        <div class="block">
+            <div th:insert="samples/sampleLeftNavigation :: sampleLeftNavigation"></div>
+            <div class="table">
+                <h3>
+                    <table>
+                        <tr class="th_padding">
+                            <th>Id</th>
+                            <th>Название</th>
+                        </tr>
+                        <div th:each="el : ${categories}">
+                            <tr class="td_center">
+                                <td><p th:text="${el.id}"></p></td>
+                                <td> <p th:text="${el.nameCategory}"></p></td>
+
+                                <td>
+                                    <form class="form-remove" th:action="'/deleteCategory/' + ${el.id}" method="post">
+                                        <button type="submit">Удалить</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </div>
+                    </table>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

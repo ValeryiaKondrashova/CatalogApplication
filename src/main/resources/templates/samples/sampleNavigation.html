@@ -1,0 +1,16 @@
+<div th:fragment="sampleNavigation">
+    <div class="nav">
+        <div class="logo"><a href="/main"><img th:src="@{img/computer.png}" alt="logo"></a></div>
+        <ul class="nav-items">
+            <li class="nav-item"><a class="a" th:href="@{/viewProducts}">Работа с товарами</a></li>
+            <li class="nav-item" th:if="${roleUser} == false">
+                <a class="a" th:href="@{/viewCategories}">Работа с категориями</a>
+            </li>
+        </ul>
+        <form class="form_logout" th:action="@{/logout}" method="post">
+            <h3 th:inline="text">Вы вошли как: [[${#httpServletRequest.remoteUser}]]</h3>
+            <input type="image" th:src="@{/img/logout.png}" width="20px" value="Sign out"/>
+        </form>
+    </div>
+</div>
+

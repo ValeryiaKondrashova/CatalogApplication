@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head th:insert="samples/sampleHead :: sampleHead"></head>
+
+<body>
+<header th:insert="samples/sampleNavigationAdmin :: sampleNavigationAdmin" class="header"></header>
+
+<div class="start-page">
+    <div class="shape shape-small"></div>
+    <div class="shape shape-big"></div>
+    <div class="container">
+        <div class="aside">
+            <div th:insert="samples/sampleSearchUser :: sampleSearchUser"></div>
+        </div>
+
+        <div class="block">
+            <div class="nav-table">
+                <a th:href="@{/navigationAdmin}"><h3>Просмотреть пользователей</h3></a>
+                <a th:href="@{/registration}"><h3>Добавить пользователя</h3></a>
+                <a th:href="@{/editUsers}"><h3>Редактировать пользователя</h3></a>
+                <a th:href="@{/removeUsers}"><h3>Удалить пользователя</h3></a>
+            </div>
+            <div class="table">
+                <h3>
+                    <table>
+                        <tr><th colspan="5">Список пользователей системы</th></tr>
+                        <tr class="th_padding">
+                            <th>Действие</th>
+                            <th>id</th>
+                            <th>username</th>
+                            <th>password</th>
+                            <th>active</th>
+                            <th>roles</th>
+                        </tr>
+                        <div th:each="el : ${users}">
+                            <tr class="td_center">
+                                <td>
+                                    <form class="form-remove" th:action="'/user/' + ${el.id} + '/delete'" method="post">
+                                        <button type="submit">Удалить</button>
+                                    </form>
+                                </td>
+                                <td> <p th:text="${el.id}"></p></td>
+                                <td> <p th:text="${el.username}"></p></td>
+                                <td> <p th:text="${el.password}"></p></td>
+                                <td> <p th:text="${el.active}"></p></td>
+                                <td th:each="r : ${el.roles}">
+                                    <p th:text="${r.getAuthority()}"></p>
+                                </td>
+                            </tr>
+                        </div>
+                    </table>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

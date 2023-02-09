@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:security="">
+<head th:insert="samples/sampleHead :: sampleHead"></head>
+
+<body>
+<header>
+    <div class="nav">
+        <div class="logo"><a href="/main"><img th:src="@{img/logo.png}" alt="logo"></a></div>
+        <ul class="nav-items">
+        </ul>
+        <form class="form_logout" th:action="@{/logout}" method="post">
+            <h3 th:inline="text">Вы вошли как: [[${#httpServletRequest.remoteUser}]]</h3>
+            <input type="image" th:src="@{/img/logout.png}" width="20px" value="Sign out"/>
+        </form>
+    </div>
+</header>
+<div class="start-page">
+    <div class="head-line-text">
+        <h1>Система для учета продуктов</h1>
+    </div>
+    <div class="sub-text">
+        <h3>Каталог продуктов</h3>
+    </div>
+    <li>
+        <a th:href="@{/viewProducts}"><button class="adm-btn">Начать работу</button></a>
+    </li>
+
+    <div class="team-photo">
+        <img th:src="@{img/computer.png}" alt=""/>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="samples/sampleHead :: sampleHead"></head>
+
+<body>
+<header th:insert="samples/sampleNavigation :: sampleNavigation" class="header"></header>
+
+<div class="start-page">
+    <div class="shape shape-small"></div>
+    <div class="shape shape-big"></div>
+    <div class="container2">
+
+        <div class="add-text">
+            <h1>Редактирование товара</h1>
+            <h3>Измените поля которые подлежали изменениям</h3>
+        </div>
+
+        <div class="add">
+            <div th:each="el : ${resProduct}">
+                <form th:action="'/edit/' + ${el.id}" method="post">
+
+                    <div class="add-item">
+                        <p>Название:</p>
+                        <input type="text" name="nameProduct" th:value="${el.nameProduct}"/><br>
+                    </div>
+                    <div class="add-item">
+                        <p>Категория товара:</p>
+                        <select class="select" id="choiceType" name="category">
+                            <option th:value="${el.category.getNameCategory()}" th:text="${el.category.getNameCategory()}"></option>
+                            <option th:each="pos : ${category}" th:value="${pos.nameCategory}" th:text="${pos.nameCategory}"></option>
+                        </select>
+                    </div>
+                    <div class="add-item">
+                        <p>Описание товара:</p>
+                        <input type="text" name="description" th:value="${el.description}"/><br>
+                    </div>
+                    <div class="add-item">
+                        <p>Цена:</p>
+                        <input type="text" name="price" th:value="${el.price}"/><br>
+                    </div>
+                    <div class="add-item">
+                        <p>Примечание общее:</p>
+                        <input type="text" name="noteCommon" th:value="${el.noteCommon}"/><br>
+                    </div>
+                    <div class="add-item">
+                        <p>Примечание специальное:</p>
+                        <input type="text" name="noteSpecial" th:value="${el.noteSpecial}"/><br>
+                    </div>
+
+                    <button type="submit">Подтвердить изменения</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

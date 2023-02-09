@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="samples/sampleHead :: sampleHead"></head>
+
+<body>
+<header th:insert="samples/sampleNavigation :: sampleNavigation" class="header"></header>
+
+<div class="start-page">
+    <div class="shape shape-small"></div>
+    <div class="shape shape-big"></div>
+    <div class="container2">
+
+        <div class="add-text">
+            <h1>Добавление категории в базу</h1>
+            <h3>Все поля являются обязательными.</h3>
+        </div>
+
+        <div class="add">
+            <h3 th:text="${message}"/><br>
+            <form th:action="@{/addCategory}" method="post">
+
+                <div class="add-item">
+                    <p>Название:</p>
+                    <input type="text" name="nameCategory" placeholder="Введите название категории товара" required/><br>
+                </div>
+
+                <button type="submit">Добавить категорию</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

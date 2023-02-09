@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head th:insert="samples/sampleHead :: sampleHead"></head>
+
+<body>
+<header th:insert="samples/sampleNavigation :: sampleNavigation" class="header"></header>
+
+<div class="start-page">
+    <div class="shape shape-small"></div>
+    <div class="shape shape-big"></div>
+    <div class="container">
+        <div class="aside">
+            <div th:insert="samples/sampleSearchProduct :: sampleSearchProduct"></div>
+        </div>
+
+        <div class="block">
+            <div th:insert="samples/sampleLeftNavigation :: sampleLeftNavigation"></div>
+            <div class="table">
+                <h3>
+                    <table>
+                        <tr class="th_padding">
+                            <th>Id</th>
+                            <th>Название</th>
+                            <th>Категория</th>
+                            <th>Описание</th>
+                            <th>Цена</th>
+                            <th>Примечание общее</th>
+                            <li th:if="${roleUser} == false">
+                                <th>Примечание специальное</th>
+                            </li>
+                        </tr>
+                        <div th:each="el : ${products}">
+                            <tr class="td_center">
+                                <td><p th:text="${el.id}"></p></td>
+                                <td> <p th:text="${el.nameProduct}"></p></td>
+                                <td> <p th:text="${el.category.getNameCategory()}"></p></td>
+                                <td> <p th:text="${el.description}"></p></td>
+                                <td> <p><span th:text="${el.price}"></span><span>р.</span></p></td>
+                                <td> <p th:text="${el.noteCommon}"></p></td>
+                                <li th:if="${roleUser} == false">
+                                    <td> <p th:text="${el.noteSpecial}"></p></td>
+                                </li>
+
+                                <td><a th:href="'/edit/' + ${el.id}">Редактировать</a></td>
+                            </tr>
+                        </div>
+                    </table>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

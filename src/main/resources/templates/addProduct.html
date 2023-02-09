@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="samples/sampleHead :: sampleHead"></head>
+
+<body>
+<header th:insert="samples/sampleNavigation :: sampleNavigation" class="header"></header>
+
+<div class="start-page">
+    <div class="shape shape-small"></div>
+    <div class="shape shape-big"></div>
+    <div class="container2">
+
+        <div class="add-text">
+            <h1>Добавление товара в базу</h1>
+            <h3>Все поля являются обязательными.</h3>
+        </div>
+
+        <div class="add">
+            <h3 th:text="${message}"/><br>
+            <form th:action="@{/addProduct}" method="post">
+
+                <div class="add-item">
+                    <p>Название:</p>
+                    <input type="text" name="nameProduct" placeholder="Введите название товара" required/><br>
+                </div>
+                <div class="add-item">
+                    <p>Категория товара:</p>
+                    <select class="select" id="choiceType" name="category">
+                        <option th:each="pos : ${category}" th:value="${pos.nameCategory}" th:text="${pos.nameCategory}"></option>
+                    </select>
+                </div>
+                <div class="add-item">
+                    <p>Описание товара:</p>
+                    <input type="text" name="description" placeholder="Введите описание товара" required/><br>
+                </div>
+                <div class="add-item">
+                    <p>Цена:</p>
+                    <input type="text" name="price" placeholder="Введите цену товара" required/><br>
+                </div>
+                <div class="add-item">
+                    <p>Примечание общее:</p>
+                    <input type="text" name="noteCommon" placeholder="Введите примечание общее" required/><br>
+                </div>
+                <div class="add-item">
+                    <p>Примечание специальное:</p>
+                    <input type="text" name="noteSpecial" placeholder="Введите примечание специальное" required/><br>
+                </div>
+                <button type="submit">Добавить товар</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
